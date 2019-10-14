@@ -21,6 +21,7 @@ import csv
 from datetime import date, datetime, time
 from io import StringIO
 import sqlite3
+from typing import Optional
 import warnings
 
 import numpy as np
@@ -583,7 +584,7 @@ class _TestSQLApi(PandasSQLTest):
     """
 
     flavor = "sqlite"
-    mode = None
+    mode: Optional[str] = None
 
     def setup_connect(self):
         self.conn = self.connect()
@@ -1234,7 +1235,7 @@ class _TestSQLAlchemy(SQLAlchemyMixIn, PandasSQLTest):
 
     """
 
-    flavor = None
+    flavor: Optional[str] = None
 
     @pytest.fixture(autouse=True, scope="class")
     def setup_class(cls):
@@ -1837,7 +1838,7 @@ class _TestSQLiteAlchemy:
 
     """
 
-    flavor = "sqlite"
+    flavor: Optional[str] = "sqlite"
 
     @classmethod
     def connect(cls):
@@ -1886,7 +1887,7 @@ class _TestMySQLAlchemy:
 
     """
 
-    flavor = "mysql"
+    flavor: Optional[str] = "mysql"
 
     @classmethod
     def connect(cls):
@@ -1955,7 +1956,7 @@ class _TestPostgreSQLAlchemy:
 
     """
 
-    flavor = "postgresql"
+    flavor: Optional[str] = "postgresql"
 
     @classmethod
     def connect(cls):
